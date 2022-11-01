@@ -11,7 +11,7 @@
 | `RB` | Right Click |  
 | `LEFT THUMB` | Browser Back | 
 | `RIGHT THUMB` | Browser Forward | 
-| Left Joystick | Scroll |
+| `Left Joystick` | Scroll |
 |           |           |
 | `A + RT` | Opens First App on Taskbar | 
 | `B + RT` | Shift Tab | 
@@ -22,7 +22,7 @@
 | `RB + RT` | Ctrl Tab |  
 | `LEFT THUMB + RT` | Volume Down | 
 | `RIGHT THUMB + RT` | Volume Up | 
-| `Right Joystick + RT | Move Mouse|
+| `Right Joystick + RT` | Move Mouse|
 |             |            |
 | `A + LT` | Down Arrow Key | 
 | `B + LT` | Right Arrow Key | 
