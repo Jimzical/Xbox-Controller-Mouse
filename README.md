@@ -12,7 +12,6 @@
 | `LEFT THUMB` | Browser Back | 
 | `RIGHT THUMB` | Browser Forward | 
 | `Left Joystick` | Scroll |
-|  #Right Trigger Combinations         |           |
 | `A + RT` | Opens First App on Taskbar | 
 | `B + RT` | Shift Tab | 
 | `X + RT` | Alt Tab | 
@@ -23,7 +22,6 @@
 | `LEFT THUMB + RT` | Volume Down | 
 | `RIGHT THUMB + RT` | Volume Up | 
 | `Right Joystick + RT` | Move Mouse|
-|             |            |
 | `A + LT` | Down Arrow Key | 
 | `B + LT` | Right Arrow Key | 
 | `X + LT` | Left Arrow Key | 
