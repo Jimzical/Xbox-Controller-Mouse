@@ -23,6 +23,7 @@
 | `LEFT THUMB + RT` | Volume Down | 
 | `RIGHT THUMB + RT` | Volume Up | 
 | `Right Joystick + RT` | Move Mouse|
+| `Left Joystick + RT` | Fast Scroll |
 | `A + LT` | Down Arrow Key | 
 | `B + LT` | Right Arrow Key | 
 | `X + LT` | Left Arrow Key | 
