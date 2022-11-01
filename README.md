@@ -1,4 +1,5 @@
 ﻿# Xbox-Controller-Mouse
+ ## This Program allows us to use a Xbox Controller as a Mouse along with other Common Keyboard Shortcuts
 | *Combination / Key* | *What it Does* |
 | ------------------- | -------------: |
 | `A` | Enter | 
