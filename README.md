@@ -15,6 +15,10 @@
  ```
  python.exe controller.py
  ```
+ <br>
+ 
+ > Hold The Trigger to Use the Combinations
+ <br>
  
 | *Combination / Key* | *What it Does* |
 | ------------------- | -------------: |
