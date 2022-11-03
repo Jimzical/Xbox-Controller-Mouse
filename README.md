@@ -1,5 +1,21 @@
 ﻿# Xbox-Controller-Mouse
  ## This Program allows us to use a Xbox Controller as a Mouse along with other Common Keyboard Shortcuts
+ 
+ **Requirements**
+ - Pyautogui Library
+ - Inputs Library
+ 
+ In Terminal Run These Lines of Code 
+ ```
+ pip install pyautogui
+ pip install inputs
+ ```
+ 
+ To Run The Code
+ ```
+ python.exe controller.py
+ ```
+ 
 | *Combination / Key* | *What it Does* |
 | ------------------- | -------------: |
 | `A` | Enter | 
