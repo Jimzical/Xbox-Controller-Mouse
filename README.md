@@ -2,6 +2,9 @@
 
  #### This Program allows us to use a Xbox Controller as a Mouse along with other Common Keyboard Shortcuts
 
+## Download
+- Direct Zip Download(https://github.com/Jimzical/Xbox-Controller-Mouse.git)
+
 ## Requirements
 
 - [ **Python** ](https://www.python.org/ftp/python/3.10.8/python-3.10.8-amd64.exe)
