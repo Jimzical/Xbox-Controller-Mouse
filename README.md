@@ -3,7 +3,7 @@
  #### This Program allows us to use a Xbox Controller as a Mouse along with other Common Keyboard Shortcuts
 
 ## Download
-- Direct Zip Download(https://github.com/Jimzical/Xbox-Controller-Mouse.git)
+- [Direct Zip Download](https://github.com/Jimzical/Xbox-Controller-Mouse.git)
 
 ## Requirements
 
