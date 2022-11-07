@@ -2,11 +2,14 @@
 
  #### This Program allows us to use a Xbox Controller as a Mouse along with other Common Keyboard Shortcuts
 
+## Download
+- [Direct Zip Download](https://github.com/Jimzical/Xbox-Controller-Mouse.git)
+
 ## Requirements
 
 - Nothing Really, All Requirements (Python, pyautogui, inputs) will be downloaded automatically  
-> You can open the Runner.bat file to check what all is being downloaded
- 
+> You can open the Runner.bat file to check what all is being downloaded, If Python is not already downloaded, you will need to install it after the file is downloaded, make sure not to change the save location, and to add the path(this option will be given during installation, just a tick box)
+ - if You want to Download Python manually, go to the [Website(get Python 3.10)](https://www.python.org/downloads/) or [Direct Zip Download](https://github.com/Jimzical/Xbox-Controller-Mouse.git)
 ## How To Run Code
 ###  Easy Way
  - Click on Xbox-Mouse.exe
@@ -56,6 +59,12 @@
 | `SELECT + LT` | Esc |
 | `LEFT THUMB + LT` | Windows + Up (fullscreen) | 
 | `RIGHT THUMB + LT` | Windows + Down (home screen)| 
+
+## Future Updates
+ - Going to add Explanations of the Function, so people can customize mappings
+ - Smoothen out the Mouse Movement
+ - Fix the Dragging items mechanic
+ - Maybe find a way to make the Python file install automatically rather than manually doing it
 
 ## Contact
 
