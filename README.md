@@ -11,11 +11,19 @@
 > You can open the Runner.bat file to check what all is being downloaded, If Python is not already downloaded, you will need to install it after the file is downloaded, make sure not to change the save location, and to add the path(this option will be given during installation, just a tick box)
 - if You want to Download Python manually, go to the [Website(get Python 3.10)](https://www.python.org/downloads/) or [Direct Zip Download](https://www.python.org/downloads/release/python-3108/)
 - Make Sure You Have Internet For The First Time You Run For The Program To Download The Required Libraries 
+
 ## How To Run Code
 ###  Easy Way (Windows Only)
- - Click on Xbox-Mouse.exe
+ - Click on Xbox-Mouse.exe (It'll Download all the required Dependencies on its own so make sure to have internet the first time you run it)
+ - Or Click on the Runner.bat (Basically does the same thing as the exe but the Terminal will be shown)
 
 ### Manual Method (Windows,MacOS,Linux)
+ - Download the Libraries using
+ ```
+ pip install pyautogui
+ pip install inputs
+ pip install plyer
+ ```
  - Go to the Directory Where the Folder is Saved and Run
  ```
  python.exe controller.py
