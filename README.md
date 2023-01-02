@@ -7,18 +7,23 @@
 
 ## Requirements
 
-- Nothing Really, All Requirements (Python, pyautogui, inputs, plyer) will be downloaded automatically  
-> You can open the Runner.bat file to check what all is being downloaded, If Python is not already downloaded, you will need to install it after the file is downloaded, make sure not to change the save location, and to add the path(this option will be given during installation, just a tick box)
-- if You want to Download Python manually, go to the [Website(get Python 3.10)](https://www.python.org/downloads/) or [Direct Zip Download](https://www.python.org/downloads/release/python-3108/)
-- Make Sure You Have Internet For The First Time You Run For The Program To Download The Required Libraries 
+- Python, if You want to Download Python, go to the [Website(get Python 3.10)](https://www.python.org/downloads/) or [Direct Zip Download](https://www.python.org/downloads/release/python-3108/)
+- All Requirements other (pyautogui, inputs, plyer) will be downloaded automatically if Code Run Through Installer.bat or Xbox-Mouse.exe
+> You can open the Installer.bat file to check what all is being downloaded, If Python is not already downloaded, you will need to install it after the file is downloaded, make sure not to change the save location, and to add the path(this option will be given during installation, just a tick box)
+> Make Sure You Have Internet For The First Time You Run For The Program To Download The Required Libraries When Code Run Through Installer.bat or Xbox-Mouse.exe
 
 ## How To Run Code
-###  Easy Way (Windows Only)
+###  Easy Way (Windows Only) 
+ > This might only work with python 3.10, not tested
  - Click on Xbox-Mouse.exe (It'll Download all the required Dependencies on its own so make sure to have internet the first time you run it)
- - Or Click on the Runner.bat (Basically does the same thing as the exe but the Terminal will be shown)
+ - Or Click on the Installer.bat (Basically does the same thing as the exe but the Terminal will be shown)
 
 ### Manual Method (Windows,MacOS,Linux)
- - Download the Libraries using
+ - Download the Libraries using (they only need to be done once)
+ ```
+ pip install -r Requirements.txt
+ ```
+ OR
  ```
  pip install pyautogui
  pip install inputs
@@ -68,18 +73,61 @@
 | `LEFT THUMB + LT` | Windows + Up (fullscreen) | 
 | `RIGHT THUMB + LT` | Windows + Down (home screen)| 
 
+## Customizing
+### To Customize the bindings, they can be done by changing the values in mapping.json
+ - There a Three Main Keys ***"LeftTriggerCondition"***, ***"RightTriggerCondition"***, ***"NoTriggerCondition"***
+ 
+    - `"NoTriggerConditon"`                   (for No Combitation Controller Presses)
+    - `"LeftTriggerCondition"`                (for Left Trigger Combintaions on the Controller)
+    - `"RightTriggerCondition"`             (for Right Trigger Combinations on the Controller)
+
+- Each of These Have Two Keys ***"ButtonAction"***, ***"JoystickAction"***
+
+    - `"ButtonAction"`                        (for Button Presses)
+        - They have a Key for Each Button on the Controller
+        - Each Button has Three Keys ***"Key"***, ***"Type"***, ***"delay"***
+        
+            - `"Key"`                         (for the Key that will be Simulated to be Pressed)
+            
+            - `"Type"`                        (for the Type of Action that will be Performed)
+                - `"buttonTap" `              (for a Single Key Press)
+                - `"CombinationalTap"`        (for a Combination of Keys Pressed)    
+                - `"ButtonHold"`              (for a Key to be Held Down)
+                - `"ButtonClick"`             (Simulate Mouse Click)
+                - `"ButtonHoldClick"`         (Simulate Mouse Click and Hold)
+                
+            - `"delay"`                       (for the Delay between the Key Presses)
+            
+    - `"JoystickAction"`                      (for Joystick Movements)
+        - They May Have a Key for ***Scroll Action*** or ***Mouse Action***
+        
+            - `"Scroll"`                      (for Scroll Action)
+                - `"joystick"`                (for the Joystick that will be used)
+                - `"speed"`                   (for the Speed of the Scroll)
+                
+            - `"MouseControl"`                (for Mouse Action)
+                - `"joystick"`                (for the Joystick that will be used)
+                - `"LowerSensitivity"`        (Region of LowerSpeed [0-1])
+                - `"UpperSensitivity"`        (Region of UpperSpeed [0-1])
+                - `"LowerSpeed"`              (Speed of LowerSensitivity Region)
+                - `"UpperSpeed"`              (Speed of UpperSensitivity Region)
+                - `"time"`                    (Time for the Mouse to Move [smoothening])
+
+
 ## Updates
- - Fixed Functions, so people can customize mappings easily
- - Smoothen out the Mouse Movement
- - Fix the Dragging items mechanic
- - Fixed the Mute Button
- - Changed a Few Mappings
- - Fixed Ctrl + Shift + Tab
- - Added Images to Notification
- - Fixed the Hold Button Feature
+ - Added json file to make customizability easier
+ - Fixed Some Small Errors
+ - Made Code more Readable
+ - Added Documentation
+ - Fixed README.md
+
+## Know Issues
+ - Issue: If the code is being run with a terminal and the terminal is closed without ending the program it might cause some issues
+ - Solution: So Far the easiest way to fix it is either to close it through the Task Manager or ctrl+alt+del and log out
 
 ## Contact
 
 Arish Kumar - arishkumar2003@gmail.com
 
 Project Link: [https://github.com/Jimzical/Xbox-Controller-Mouse](https://github.com/Jimzical/Xbox-Controller-Mouse)
+
