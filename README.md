@@ -75,35 +75,43 @@
 
 ## Customizing
 ### To Customize the bindings, they can be done by changing the values in mapping.json
- - There a Three Main Keys
-    - "NoTriggerConditon"(for No Combitation Controller Presses)
-    - "LeftTriggerCondition"(for Left Trigger Combintaions on the Controller)
-    - "RightTriggerCondition" (for Right Trigger Combinations on the Controller)
+ - There a Three Main Keys ***"LeftTriggerCondition"***, ***"RightTriggerCondition"***, ***"NoTriggerCondition"***
+ 
+    - `"NoTriggerConditon"`                   (for No Combitation Controller Presses)
+    - `"LeftTriggerCondition"`                (for Left Trigger Combintaions on the Controller)
+    - `"RightTriggerCondition"`             (for Right Trigger Combinations on the Controller)
 
-- Each of These Have Two Keys
-    - "ButtonAction" (for Button Presses)
+- Each of These Have Two Keys ***"ButtonAction"***, ***"JoystickAction"***
+
+    - `"ButtonAction"`                        (for Button Presses)
         - They have a Key for Each Button on the Controller
-        - Each Button has Three Keys
-            - "Key" (for the Key that will be Simulated to be Pressed)
-            - "type" (for the Type of Action that will be Performed)
-                - "buttonTap" (for a Single Key Press)
-                - "CombinationalTap" (for a Combination of Keys Pressed)    
-                - "ButtonHold" (for a Key to be Held Down)
-                - "ButtonClick" (Simulate Mouse Click)
-                - "ButtonHoldClick" (Simulate Mouse Click and Hold)
-            - "delay" (for the Delay between the Key Presses)
-    - "JoystickAction" (for Joystick Movements)
-        - They May Have a Key for Scroll Action or Mouse Action
-            - "Scroll" (for Scroll Action)
-                - "joystick" (for the Joystick that will be used)
-                - "speed" (for the Speed of the Scroll)
-            - "MouseControl" (for Mouse Action)
-                - "joystick" (for the Joystick that will be used)
-                - "LowerSensitivity" (Region of LowerSpeed [0-1])
-                - "UpperSensitivity" (Region of UpperSpeed [0-1])
-                - "LowerSpeed" (Speed of LowerSensitivity Region)
-                - "UpperSpeed" (Speed of UpperSensitivity Region)
-                - "time" (Time for the Mouse to Move [smoothening])
+        - Each Button has Three Keys ***"Key"***, ***"Type"***, ***"delay"***
+        
+            - `"Key"`                         (for the Key that will be Simulated to be Pressed)
+            
+            - `"Type"`                        (for the Type of Action that will be Performed)
+                - `"buttonTap" `              (for a Single Key Press)
+                - `"CombinationalTap"`        (for a Combination of Keys Pressed)    
+                - `"ButtonHold"`              (for a Key to be Held Down)
+                - `"ButtonClick"`             (Simulate Mouse Click)
+                - `"ButtonHoldClick"`         (Simulate Mouse Click and Hold)
+                
+            - `"delay"`                       (for the Delay between the Key Presses)
+            
+    - `"JoystickAction"`                      (for Joystick Movements)
+        - They May Have a Key for ***Scroll Action*** or ***Mouse Action***
+        
+            - `"Scroll"`                      (for Scroll Action)
+                - `"joystick"`                (for the Joystick that will be used)
+                - `"speed"`                   (for the Speed of the Scroll)
+                
+            - `"MouseControl"`                (for Mouse Action)
+                - `"joystick"`                (for the Joystick that will be used)
+                - `"LowerSensitivity"`        (Region of LowerSpeed [0-1])
+                - `"UpperSensitivity"`        (Region of UpperSpeed [0-1])
+                - `"LowerSpeed"`              (Speed of LowerSensitivity Region)
+                - `"UpperSpeed"`              (Speed of UpperSensitivity Region)
+                - `"time"`                    (Time for the Mouse to Move [smoothening])
 
 
 ## Updates
@@ -122,182 +130,4 @@
 Arish Kumar - arishkumar2003@gmail.com
 
 Project Link: [https://github.com/Jimzical/Xbox-Controller-Mouse](https://github.com/Jimzical/Xbox-Controller-Mouse)
-
-
-       
-       
-{
-    "Killswitch" : "start",
-
-    "NoTriggerCondition": {
-        "ButtonAction":{
-            "a": {
-                "type": "ButtonTap",
-                "key": "enter",
-                "delay": 0.1
-            },
-            "b": {
-                "type": "ButtonTap",
-                "key": "tab",
-                "delay": 0
-            },
-            "x": {
-                "type": "CombinationalTap",
-                "key": ["ctrl","w","NULL"],
-                "delay": 0
-            },
-            "y": {
-                "type": "CombinationalTap",
-                "key": ["ctrl","shift","t"],
-                "delay": 0
-            },
-            "select": {
-                "type": "CombinationalTap",
-                "key": ["alt","f4","NULL"],
-                "delay": 0
-            },
-            "lb": {
-                "type": "ButtonClick",
-                "key": "left"
-            },
-            "rb": {
-                "type": "ButtonClick",
-                "key": "right"
-            },
-            "leftthumb": {
-                "type": "ButtonTap",
-                "key": "volumedown",
-                "delay": 0
-            },
-            "rightthumb": {
-                "type": "ButtonTap",
-                "key": "volumeup",
-                "delay": 0
-            }
-        },
-
-
-        "JoystickAction":{
-
-            "Scroll": {
-                "joystick": "left",
-                "speed": 50
-            }
-        }
-    },
-
-    "LeftTriggerCondition":{
-        "ButtonAction":{
-            "a":{
-                "type": "ButtonTap",
-                "key": "down",
-                "delay": 0
-            },
-            "b":{
-                "type": "ButtonTap",
-                "key": "right",
-                "delay": 0
-            },
-            "x":{
-                "type": "ButtonTap",
-                "key": "left",
-                "delay": 0
-            },
-            "y":{
-                "type": "ButtonTap",
-                "key": "up",
-                "delay": 0
-            },
-            "select":{
-                "type": "ButtonTap",
-                "key": "esc",
-                "delay": 0
-            },
-            "lb":{
-                "type": "CombinationalTap",
-                "key": ["ctrl","super","left"],
-                "delay": 0
-            },
-            "rb":{
-                "type": "CombinationalTap",
-                "key": ["ctrl","super","right"],
-                "delay": 0
-            },
-            "leftthumb":{
-                "type": "CombinationalTap",
-                "key": ["super","up"],
-                "delay": 0
-            },
-            "rightthumb":{
-                "type": "CombinationalTap",
-                "key": ["super","down"],
-                "delay": 0
-            }
-        },
-        "JoystickAction":{
-            "None": "None"
-        }
-        
-    },
-
-    "RightTriggerCondition":{
-        "ButtonAction":{
-            "a":{
-            "type": "CombinationalTap",
-            "key": ["ctrl","super","1"],
-            "delay": 0                
-            },  
-            "b":{
-            "type": "CombinationalTap",
-            "key": ["shift","tab"],
-            "delay": 0                
-            },
-            "x":{
-            "type": "CombinationalTap",
-            "key": ["alt","tab"],
-            "delay": 0                
-            },
-            "y":{
-            "type": "CombinationalTap",
-            "key": ["ctrl","super","3"],
-            "delay": 0                
-            },
-            "select":{
-            "type": "ButtonTap",
-            "key": "volumemute",
-            "delay": 0                
-            },
-            "lb":{
-            "type": "CombinationalTap",
-            "key": ["ctrl","tab","shift"],
-            "delay": 0                
-            },
-            "rb":{
-            "type": "CombinationalTap",
-            "key": ["ctrl","tab"],
-            "delay": 0                
-            },
-            "leftthumb":{
-            "type": "ButtonHoldTap",
-            "key": "alt",
-            "delay": 0                
-            },
-            "rightthumb":{
-            "type": "ButtonHoldClick",
-            "key": "left",
-            "delay": 0               
-            }
-        },
-        "JoystickAction":{
-            "MouseControl": {
-                "joystick": "right",
-                "LowerSensitivity": 0.30,
-                "UpperSensitivity": 0.75,
-                "LowerSpeed": 15,
-                "UpperSpeed": 65,
-                "time": 0.00001
-            }
-        }
-    }
-}
 
