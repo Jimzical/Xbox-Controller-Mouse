@@ -89,9 +89,9 @@
         
             - `"Key"`                         (for the Key that will be Simulated to be Pressed)
             
-            - `"Type"`                        (for the Type of Action that will be Performed)
-                - `"buttonTap" `              (for a Single Key Press)
-                - `"CombinationalTap"`        (for a Combination of Keys Pressed)    
+            - `"Type"`                        (for the Type of Action that will be Performed) [All of these are Fucntions in controller.py, You can check their Documentation for Better Understanding]
+                - `"buttonTap" `              (for a Single Key Press) [Make sure to keep delay: "0" even if no Delays Required]
+                - `"CombinationalTap"`        (for a Combination of Keys Pressed) [Make sure to keep delay: "0" even if no Delays Required and keep key's Third Element as "NULL" in case no Third Key is Used]
                 - `"ButtonHold"`              (for a Key to be Held Down)
                 - `"ButtonClick"`             (Simulate Mouse Click)
                 - `"ButtonHoldClick"`         (Simulate Mouse Click and Hold)
