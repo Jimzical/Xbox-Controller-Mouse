@@ -438,6 +438,5 @@ if __name__ == '__main__':
       while True:
                   # print(joy.read())  #prints the list of inputs
                   Actions()
-                  gui.sleep(0.1)
       print("ended")
     
