@@ -127,7 +127,5 @@
 
 ## Contact
 
-Arish Kumar - arishkumar2003@gmail.com
-
 Project Link: [https://github.com/Jimzical/Xbox-Controller-Mouse](https://github.com/Jimzical/Xbox-Controller-Mouse)
 
