@@ -121,6 +121,12 @@
  - Added Documentation
  - Fixed README.md
 
+## Future Features
+ - Add a WASD control to the joystick
+ - Add a GUI Controller Detector to check if the controller is Connected properly
+ - Add a GUI mapping system
+ - Figure out a way to use Pyinstaller with this
+ 
 ## Know Issues
  - Issue: If the code is being run with a terminal and the terminal is closed without ending the program it might cause some issues
  - Solution: So Far the easiest way to fix it is either to close it through the Task Manager or ctrl+alt+del and log out
