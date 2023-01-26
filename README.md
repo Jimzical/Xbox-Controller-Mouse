@@ -122,6 +122,7 @@
  - Fixed README.md
 
 ## Future Features
+ - A way to run Programs or open files with the Press or a button
  - Add a WASD control to the joystick
  - Add a GUI Controller Detector to check if the controller is Connected properly
  - Add a GUI mapping system
