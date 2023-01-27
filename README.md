@@ -1,7 +1,12 @@
 # Xbox-Controller-Mouse
 
  #### This Program allows us to use a Xbox Controller as a Mouse along with other Common Keyboard Shortcuts
-
+ 
+# TEMP ----> TODOS
+     - add better control modifying ui
+     - make the html an app using electron or somthing
+     - check if installer bat still needed and if a exe would still work or not
+     - chek if installer bat can be made to just run the requirements.txt
 ## Download
 - [Direct Zip Download](https://github.com/Jimzical/Xbox-Controller-Mouse/archive/refs/heads/main.zip)
 
