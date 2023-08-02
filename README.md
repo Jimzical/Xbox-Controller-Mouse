@@ -1,7 +1,12 @@
 # Xbox-Controller-Mouse
 
  #### This Program allows us to use a Xbox Controller as a Mouse along with other Common Keyboard Shortcuts
-
+ 
+# TEMP ----> TODOS
+     - add better control modifying ui
+     - make the html an app using electron or somthing
+     - check if installer bat still needed and if a exe would still work or not
+     - chek if installer bat can be made to just run the requirements.txt
 ## Download
 - [Direct Zip Download](https://github.com/Jimzical/Xbox-Controller-Mouse/archive/refs/heads/main.zip)
 
@@ -21,7 +26,7 @@
 ### Manual Method (Windows,MacOS,Linux)
  - Download the Libraries using (they only need to be done once)
  ```
- pip install -r Requirements.txt
+ pip install -r requirements.txt
  ```
  OR
  ```
@@ -130,9 +135,9 @@
  
 ## Know Issues
  - Issue: If the code is being run with a terminal and the terminal is closed without ending the program it might cause some issues
- - Solution: So Far the easiest way to fix it is either to close it through the Task Manager or ctrl+alt+del and log out
+    > Solution: So Far the easiest way to fix it is either to close it through the Task Manager or ctrl+alt+del and log out
 
 ## Contact
 
-Project Link: [https://github.com/Jimzical/Xbox-Controller-Mouse](https://github.com/Jimzical/Xbox-Controller-Mouse)
+Project Link: https://github.com/Jimzical/Xbox-Controller-Mouse
 

@@ -1,14 +1,47 @@
+'''
+---------------------------------------------------
+UPDATE LOG
+---------------------------------------------------
+
+ - Changed Mouse Movement to be more accurate with Dynamic Speed and More Optimized
+
+---------------------------------------------------
+Planned Updates
+---------------------------------------------------
+
+ - Short Term Goal is to be able to use the Controller as a Mouse and Keyboard
+      - Update The README file
+      - Be Able to open Applications
+      - Be Able to Open Websites
+      - Be Able to Play Sound Clips
+      - Be Able to Type
+      
+      - Problematic Goals
+      - Make the joystick movement map to WASD (current problem is that doing that heats up the cpu too much as its constaly checking for input)
+ - Long Term Goal is to be able to use the Controller as a Mouse and Keyboard
+      - Possibly Add a Long Press Functionality 
+      - Add a GUI to make it easier to use
+      - add threading or some other form of optimization to make it faster 
+
+'''
+
+
+
 from inputs import get_gamepad
 import math
 import threading
 from plyer import notification
-import pyautogui as gui
+import pyautogui as auto
 import json
+import time
 
 class XboxController(object):
     MAX_TRIG_VAL = math.pow(2, 8)
     MAX_JOY_VAL = math.pow(2, 15)
 
+      # TODO: After Fixing all the major bugs, comment out or remove the Dpad Operations all together since they dont work
+      # Optionally if im extra jobless, I can try to fix them
+      # im not doing it right now because im lazy and they are not that important. plus they might break other things
     def __init__(self):
 
         self.LeftJoystickY = 0
@@ -53,12 +86,12 @@ class XboxController(object):
             'lt' : self.LeftTrigger,
             'leftthumb' : self.LeftThumb,
             'rightthumb' : self.RightThumb,
-            'up' : self.UpDPad,           #these dont really work
-            'down' : self.DownDPad,       #these dont really work
-            'left' : self.LeftDPad,       #these dont really work
-            'right' : self.RightDPad,      #these dont really work
             'start' : self.Back,          #for some reason these two are interchanged for my controller
             'select' : self.Start           #for some reason these two are interchanged for my controller
+            # 'up' : self.UpDPad,           #these dont really work
+            # 'down' : self.DownDPad,       #these dont really work
+            # 'left' : self.LeftDPad,       #these dont really work
+            # 'right' : self.RightDPad,      #these dont really work
             }
             # return [leftx, lefty, a, x, rb, rightx, righty , rt, b,lt ,lb,leftthumb,rightthumb,y,down]
             return dict
@@ -108,8 +141,7 @@ class XboxController(object):
                     self.UpDPad = event.state
                 elif event.code == 'BTN_TRIGGER_HAPPY4':
                     self.DownDPad = event.state
-
-def ButtonTap(button,tappedKey,delay = 0):
+def ButtonTap(button,tappedKey):
       # not for mouse movement      
       '''
 
@@ -119,13 +151,10 @@ def ButtonTap(button,tappedKey,delay = 0):
       ### @Parameters
       * button : the Button to be Pressed on the Controller
       * tappedKey : the Key which will be Simulated to be Pressed on the Keyboard
-      * delay : the Delay between the Key Press and Release (It is the Duration of the Key Press)
-
       '''    
-      gui.press(tappedKey)
+      auto.press(tappedKey)
       print(tappedKey)    
-      gui.sleep(delay)     
- 
+      auto.sleep(0.1)     
 
 def ButtonClick(button,tappedKey = 'left'):
       # not for mouse movement   
@@ -137,40 +166,37 @@ def ButtonClick(button,tappedKey = 'left'):
       ### @Parameters
       * button : the Button to be Pressed on the Controller
       * tappedKey : the Key which will be Simulated to be Pressed on the Keyboard (left,right,middle) [Default = left]
-
       '''       
 
       if(tappedKey == 'left'):
-            gui.leftClick()
+            auto.leftClick()
       elif(tappedKey == 'right'):
-            gui.rightClick()
+            auto.rightClick()
       elif(tappedKey == 'middle'):
-            gui.middleClick()
+            auto.middleClick()
     
-      print(tappedKey)       
+      print(tappedKey)  
       return None
 
-def CombinationTap(button,key1,key2,key3 = 'NULL', delay = 0):
+# TODO: add types in the fucntion description
+def CombinationTap(button,keys):
       '''
       ---------------------------------------------------
       To Simulate a Key Combination Press
       ---------------------------------------------------
       ### @Parameters
       * button : the Button to be Pressed on the Controller
-      * key1 : the First Key which will be Simulated to be Pressed on the Keyboard
-      * key2 : the Second Key which will be Simulated to be Pressed on the Keyboard
-      * key3 : the Third Key which will be Simulated to be Pressed on the Keyboard (Optional) [Default = NULL]
-      * delay : the Delay between the Key Press and Release (It is the Duration of the Key Press) [Default = 0]
+      * keys : the Keys which will be Simulated to be Pressed on the Keyboard
       '''
-      print(key1+' + '+key2+' + '+key3)
-      gui.keyDown(key1)
-      gui.keyDown(key2)
-      if(key3 != 'NULL'):
-            gui.sleep(delay)
-            gui.press(key3)
-      gui.keyUp(key1)
-      gui.keyUp(key2)
-            
+      print(' + '.join(keys))
+
+      auto.keyDown(keys[0])
+      auto.keyDown(keys[1])
+      if(len(keys) == 3):
+            auto.press(keys[2])
+      auto.keyUp(keys[0])
+      auto.keyUp(keys[1])
+
 def ButtonHoldTap(button,key):
       '''
       ---------------------------------------------------
@@ -181,11 +207,11 @@ def ButtonHoldTap(button,key):
       * key : the Key which will be Simulated to be Pressed on the Keyboard
 
       '''
-      gui.keyDown(key)
-      print(button+" Pressed")
+      auto.keyDown(key)
+      print(key +" Pressed")
       while(joy.read()[button] == 1):
             Actions()
-      gui.keyUp(key)
+      auto.keyUp(key)
             
 def ButtonHoldClick(button,key = 'left'):
       '''
@@ -198,14 +224,15 @@ def ButtonHoldClick(button,key = 'left'):
       * key : the Key which will be Simulated to be Pressed on the Keyboard (left,right,middle) [Default = left]
 
       '''
-      gui.mouseDown(button = key)
-      print(button+" Pressed")
+      auto.mouseDown(button = key)
+      print(key+" Pressed")
       while(joy.read()[button] == 1):
             MouseControl()
-      gui.mouseUp(button = key)
+      auto.mouseUp(button = key)
             
 
-
+# TODO: a delay is present somewhere in the code making tge scroll not smooth anymore
+# TODO: Fast SCroll is not working
 def Scroll(joystick = 'left',speed = 50):
       '''
       
@@ -219,11 +246,13 @@ def Scroll(joystick = 'left',speed = 50):
       '''      
       yAxis = joystick + 'y'
       if(joy.read()[yAxis] > 0.5):
-                  gui.scroll(speed)
+                  auto.scroll(speed)
       if(joy.read()[yAxis] < -0.5):
-            gui.scroll(-speed)
+            auto.scroll(-speed)
 
-def MouseControl(joystick = 'right',LowerSensitivity = 0.30,UpperSensitivity = 0.75,LowerSpeed = 15,UpperSpeed = 65,time = 0.00001):
+# TODO: add delay option for the json binding thing
+# TODO: add comments for the parameters in json file
+def MouseControl(joystick = 'right',LowerSensitivity = 0.30,Speed = 65):
       '''
       
       ---------------------------------------------------
@@ -232,73 +261,30 @@ def MouseControl(joystick = 'right',LowerSensitivity = 0.30,UpperSensitivity = 0
       ### @Parameters
       * joystick : the Joystick to be used on the Controller (left,right) [Default = right]
       * LowerSensitivity : the Lower Sensitivity Region of the Joystick (Basically an Area Percentage)[Default = 0.30]
-      * UpperSensitivity : the Upper Sensitivity Region of the Joystick (Basically an Area Percentage)[Default = 0.75]
-      * LowerSpeed : the Speed of the Mouse Movement in the LowerSensitivity Region[Default = 15]
-      * UpperSpeed : the Speed of the Mouse Movement in the UpperSensitivity Region[Default = 65]
+      * Speed : the Speed of the Mouse Movement in the UpperSensitivity Region[Default = 65]
+      
+      # REMOVED TIME PARAMETER IN THIS VERSION
       * time : the Time Delay between the Mouse Movements (Changes the Smoothness of the Movement)(Optional)[Default = 0.00001]
       '''
       
       X_Axis = joystick + 'y'  #kind of messed up while mappig the inputs to the dictionary
       Y_Axis = joystick + 'x'
 
-      #Diagonal Right Up
-      if(joy.read()[Y_Axis] > LowerSensitivity and joy.read()[X_Axis] < -LowerSensitivity):
-            gui.moveRel(LowerSpeed,LowerSpeed,time) 
-      #Diagonal Right Down
-      elif(joy.read()[Y_Axis] > LowerSensitivity and joy.read()[X_Axis] > LowerSensitivity):
-            gui.moveRel(LowerSpeed,-LowerSpeed,time) 
-      #Diagonal Left Up
-      elif(joy.read()[Y_Axis] < -LowerSensitivity and joy.read()[X_Axis] < -LowerSensitivity):
-            gui.moveRel(-LowerSpeed,LowerSpeed,time) 
-      #Diagonal Left Down
-      elif(joy.read()[Y_Axis] < -LowerSensitivity and joy.read()[X_Axis] > LowerSensitivity):
-            gui.moveRel(-LowerSpeed,-LowerSpeed,time) 
-      
-      # right
-      elif(joy.read()[Y_Axis] > LowerSensitivity):
-            gui.moveRel(LowerSpeed,0,time) 
-      # left
-      elif(joy.read()[Y_Axis] < -LowerSensitivity):
-            gui.moveRel(-LowerSpeed,0,time)
-      # down
-      elif(joy.read()[X_Axis] > LowerSensitivity):
-            gui.moveRel(0,-LowerSpeed,time) 
-      # up
-      elif(joy.read()[X_Axis] < -LowerSensitivity):
-            gui.moveRel(0,LowerSpeed,time)
+      y_speed = -int((joy.read()[X_Axis] * 100) * Speed / 100  )  #not sure why but im invertin the y axis. i dont remember why i did this but it works
+      x_speed = int((joy.read()[Y_Axis] * 100) * Speed / 100  )
 
-      # same but faster 
-      #Diagonal Right Up
-      if(joy.read()[Y_Axis] > UpperSensitivity and joy.read()[X_Axis] < -UpperSensitivity):
-            gui.moveRel(UpperSpeed,UpperSpeed,time) 
-      #Diagonal Right Down
-      elif(joy.read()[Y_Axis] > UpperSensitivity and joy.read()[X_Axis] > UpperSensitivity):
-            gui.moveRel(UpperSpeed,-UpperSpeed,time) 
-      #Diagonal Left Up
-      elif(joy.read()[Y_Axis] < -UpperSensitivity and joy.read()[X_Axis] < -UpperSensitivity):
-            gui.moveRel(-UpperSpeed,UpperSpeed,time) 
-      #Diagonal Left Down
-      elif(joy.read()[Y_Axis] < -UpperSensitivity and joy.read()[X_Axis] > UpperSensitivity):
-            gui.moveRel(-UpperSpeed,-UpperSpeed,time) 
-      # right
-      elif(joy.read()[Y_Axis] > UpperSensitivity):
-            gui.moveRel(UpperSpeed,0,time) 
-      # left
-      elif(joy.read()[Y_Axis] < -UpperSensitivity):
-            gui.moveRel(-UpperSpeed,0,time)
-      # down
-      elif(joy.read()[X_Axis] > UpperSensitivity):
-            gui.moveRel(0,-UpperSpeed,time) 
-      # up
-      elif(joy.read()[X_Axis] == -1): #odd case where it only worked with -1 properly for some reason
-            gui.moveRel(0,UpperSpeed,time)
+      # inverting
+      # y_speed = -y_speed
 
+      # print("x_speed = " + str(x_speed), "y_speed = " + str(y_speed))
+
+      if (joy.read()[Y_Axis] > LowerSensitivity or joy.read()[X_Axis] > LowerSensitivity or joy.read()[Y_Axis] < LowerSensitivity or joy.read()[X_Axis] < LowerSensitivity ):
+            auto.moveRel(x_speed,y_speed)
 
 
 def KillSwitch(button = 'start'):
-# ====================================================================================
       # kill switch
-      button = mapping["KillSwitch"]
+      button = bindings["KillSwitch"]
       if(joy.read()[button] == 1): 
             notification.notify(
                   title = 'Ended',
@@ -306,33 +292,31 @@ def KillSwitch(button = 'start'):
                   app_icon = "app-media\colored_con.ico",
                   timeout = 10,
             ) 
-            print(button + " button pressed\nended")
+            print(button + " button pressed\nEnded")
             exit()
 
-def ButtonActionConstructor(button,type,key, delay = 0):
+def ButtonActionConstructor(button,type,key):
       if type == "ButtonTap":
-            ButtonTap(button,key,delay = delay)
+            ButtonTap(button,key)
       elif type == "ButtonClick":
-            ButtonClick(button,key,delay = delay)
+            ButtonClick(button,key)
       elif type == "CombinationalTap":
-            CombinationTap(button,key1 = key[0],key2 = key[1], key3 = key[2],delay = delay)
+            CombinationTap(button,key )
       elif type == "ButtonHoldTap":
-            ButtonHoldTap(button,key,delay = delay)
+            ButtonHoldTap(button,key)
       elif type == "ButtonHoldClick":
-            ButtonHoldClick(button,key,delay = delay)
-
+            ButtonHoldClick(button,key)
 
 def NoTriggerCondition():
-      NoTriggerButtons = mapping["NoTriggerCondition"]["ButtonAction"]
-      NoTriggerJoystick = mapping["NoTriggerCondition"]["JoystickAction"]
+      NoTriggerButtons = bindings["NoTriggerCondition"]["ButtonAction"]
+      NoTriggerJoystick = bindings["NoTriggerCondition"]["JoystickAction"]
       for ControllerButton in NoTriggerButtons.keys():
             if (joy.read()[ControllerButton] == 1):
       
                   type = NoTriggerButtons[ControllerButton]["type"]
                   key = NoTriggerButtons[ControllerButton]["key"]
-                  delay = NoTriggerButtons[ControllerButton]["delay"]
       
-                  ButtonActionConstructor(ControllerButton,type,key,delay)
+                  ButtonActionConstructor(ControllerButton,type,key)
                   return
       
       if ("Scroll" in NoTriggerJoystick.keys()):
@@ -343,22 +327,19 @@ def NoTriggerCondition():
             joystick = NoTriggerJoystick["MouseControl"]["joystick"]
             lowerSensitivity = NoTriggerJoystick["MouseControl"]["lowerSensitivity"]
             upperSensitivity = NoTriggerJoystick["MouseControl"]["upperSensitivity"]
-            lowerSpeed = NoTriggerJoystick["MouseControl"]["lowerSpeed"]
-            upperSpeed = NoTriggerJoystick["MouseControl"]["upperSpeed"]
-            Time = NoTriggerJoystick["MouseControl"]["time"]
-            MouseControl(joystick,lowerSensitivity,upperSensitivity,lowerSpeed,upperSpeed,Time)      
+            Speed = NoTriggerJoystick["MouseControl"]["Speed"]
+            MouseControl(joystick,lowerSensitivity,upperSensitivity,Speed)      
       
 def RightTriggerCondition():
-      RightTriggerButtons = mapping["RightTriggerCondition"]["ButtonAction"]
-      RightTriggerJoystick = mapping["RightTriggerCondition"]["JoystickAction"]
+      RightTriggerButtons = bindings["RightTriggerCondition"]["ButtonAction"]
+      RightTriggerJoystick = bindings["RightTriggerCondition"]["JoystickAction"]
       for ControllerButton in RightTriggerButtons.keys():
             if (joy.read()[ControllerButton] == 1):
       
                   type = RightTriggerButtons[ControllerButton]["type"]
                   key = RightTriggerButtons[ControllerButton]["key"]
-                  delay = RightTriggerButtons[ControllerButton]["delay"]
       
-                  ButtonActionConstructor(ControllerButton,type,key,delay)
+                  ButtonActionConstructor(ControllerButton,type,key)
       
       if ("Scroll" in RightTriggerJoystick.keys()):
             joystick = RightTriggerJoystick["Scroll"]["joystick"]
@@ -367,25 +348,21 @@ def RightTriggerCondition():
       if ("MouseControl" in RightTriggerJoystick.keys()):
             joystick = RightTriggerJoystick["MouseControl"]["joystick"]
             lowerSensitivity = RightTriggerJoystick["MouseControl"]["LowerSensitivity"]
-            upperSensitivity = RightTriggerJoystick["MouseControl"]["UpperSensitivity"]
-            lowerSpeed = RightTriggerJoystick["MouseControl"]["LowerSpeed"]
-            upperSpeed = RightTriggerJoystick["MouseControl"]["UpperSpeed"]
-            Time = RightTriggerJoystick["MouseControl"]["time"]
-            MouseControl(joystick,lowerSensitivity,upperSensitivity,lowerSpeed,upperSpeed,Time)      
+            Speed = RightTriggerJoystick["MouseControl"]["Speed"]
+            MouseControl(joystick,lowerSensitivity,Speed)      
       return
 
 def LeftTriggerCondition():
-      LeftTriggerButtons = mapping["LeftTriggerCondition"]["ButtonAction"]
-      LeftTriggerJoystick = mapping["LeftTriggerCondition"]["JoystickAction"]
+      LeftTriggerButtons = bindings["LeftTriggerCondition"]["ButtonAction"]
+      LeftTriggerJoystick = bindings["LeftTriggerCondition"]["JoystickAction"]
 
       for ControllerButton in LeftTriggerButtons.keys():
             if (joy.read()[ControllerButton] == 1):
       
                   type = LeftTriggerButtons[ControllerButton]["type"]
                   key = LeftTriggerButtons[ControllerButton]["key"]
-                  delay = LeftTriggerButtons[ControllerButton]["delay"]
       
-                  ButtonActionConstructor(ControllerButton,type,key,delay)
+                  ButtonActionConstructor(ControllerButton,type,key)
       
       if ("Scroll" in LeftTriggerJoystick.keys()):
             joystick = LeftTriggerJoystick["Scroll"]["joystick"]
@@ -393,24 +370,21 @@ def LeftTriggerCondition():
             Scroll(joystick,speed)  
       if ("MouseControl" in LeftTriggerJoystick.keys()):
             joystick = LeftTriggerJoystick["MouseControl"]["joystick"]
-            lowerSensitivity = LeftTriggerJoystick["MouseControl"]["lowerSensitivity"]
-            upperSensitivity = LeftTriggerJoystick["MouseControl"]["upperSensitivity"]
-            lowerSpeed = LeftTriggerJoystick["MouseControl"]["lowerSpeed"]
-            upperSpeed = LeftTriggerJoystick["MouseControl"]["upperSpeed"]
-            Time = LeftTriggerJoystick["MouseControl"]["time"]
-            MouseControl(joystick,lowerSensitivity,upperSensitivity,lowerSpeed,upperSpeed,Time)      
+            lowerSensitivity = LeftTriggerJoystick["MouseControl"]["LowerSensitivity"]
+            Speed = LeftTriggerJoystick["MouseControl"]["Speed"]
+            MouseControl(joystick,lowerSensitivity,Speed)      
     
       return
 def Actions():
 # ====================================================================================
-      if(joy.read()['start'] == 1): 
+      if(joy.read()[bindings['Killswitch']] == 1): 
             notification.notify(
                   title = 'Ended',
                   message = 'You May Turn Off the Controller Now',
                   app_icon = "app-media\colored_con.ico",
                   timeout = 10,
             ) 
-            print("start button pressed\nended")
+            print("Killswitch Activated\nended")
             exit()
 # +++++++++++++++++++++++++++++++No Trigger cases++++++++++++++++++++++++++++++++++++++++++++++++++
       NoTriggerCondition()
@@ -423,20 +397,22 @@ def Actions():
 
 
 if __name__ == '__main__':
-      global mapping
-      with open('mapping.json', 'r') as f:
-            mapping = json.load(f)
-      
+      global bindings
+      with open('bindings.json', 'r') as f:
+            bindings = json.load(f)
+            
       joy = XboxController()
       notification.notify(
             title = 'Started',
             message = 'You May Use the Controller Now',
             app_icon = "app-media\colored_con.ico",
-            timeout = 10,
+            timeout = 2,
             )
-      print("started")                      
+      print("Started")                      
       while True:
                   # print(joy.read())  #prints the list of inputs
                   Actions()
-      print("ended")
+                  auto.sleep(0.1)
+                  # make a simple machine leanring algorithm to guess how much time to sleep
+      
     
