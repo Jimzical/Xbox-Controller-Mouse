@@ -1,0 +1,169 @@
+
+{
+    "Killswitch" : "start",
+
+    "NoTriggerCondition": {
+        "Description": "When No Trigger is Pressed",
+
+        "ButtonAction":{
+
+            "a": {
+                "type": "ButtonTap",
+                "key": "enter"
+            },
+            "b": {
+                "type": "ButtonTap",
+                "key": "tab"
+            },
+            "x": {
+                "type": "CombinationalTap",
+                "key": ["ctrl","w"]
+            },
+            "y": {
+                "type": "CombinationalTap",
+                "key": ["ctrl","shift","t"]
+            },
+            "select": {
+                "type": "CombinationalTap",
+                "key": ["alt","f4"]
+            },
+            "lb": {
+                "type": "ButtonClick",
+                "key": "left"
+            },
+            "rb": {
+                "type": "ButtonClick",
+                "key": "right"
+            },
+            "leftthumb": {
+                "type": "ButtonTap",
+                "key": "volumedown"
+            },
+            "rightthumb": {
+                "type": "ButtonTap",
+                "key": "volumeup"
+            }
+        },
+
+
+        "JoystickAction":{
+            "Description": "Not Recommended to use Mouse Control with No Trigger Condition as it will be laggy, this can be fixed by deleting the auto.sleep(0.1) in the last line of the code code. Word of caution, this will make the code run faster but heat up the CPU",
+            "None": "None"
+        }
+    },
+
+    "LeftTriggerCondition":{
+        "ButtonAction":{
+            "a":{
+                "type": "ButtonTap",
+                "key": "down"
+            },
+            "b":{
+                "type": "ButtonTap",
+                "key": "right"
+            },
+            "x":{
+                "type": "ButtonTap",
+                "key": "left"
+            },
+            "y":{
+                "type": "ButtonTap",
+                "key": "up"
+            },
+            "select":{
+                "type": "ButtonTap",
+                "key": "esc"
+            },
+            "lb":{
+                "type": "CombinationalTap",
+                "key": ["ctrl","super","left"]
+            },
+            "rb":{
+                "type": "CombinationalTap",
+                "key": ["ctrl","super","right"]
+            },
+            "leftthumb":{
+                "type": "CombinationalTap",
+                "key": ["super","up"]
+            },
+            "rightthumb":{
+                "type": "CombinationalTap",
+                "key": ["super","down"]
+            }
+        },
+        "JoystickAction":{
+            "MouseControl": {
+                "joystick": "right",
+                "LowerSensitivity": 0.30,
+                "Speed": 165
+            },
+            "Scroll": {
+                "joystick": "left",
+                "speed": 150
+            }
+        }
+        
+    },
+
+    "RightTriggerCondition":{
+        "ButtonAction":{
+            "a":{
+            "type": "CombinationalTap",
+            "key": ["ctrl","super","1"],
+            "delay": 0                
+            },  
+            "b":{
+            "type": "CombinationalTap",
+            "key": ["shift","tab"],
+            "delay": 0                
+            },
+            "x":{
+            "type": "CombinationalTap",
+            "key": ["alt","tab"],
+            "delay": 0                
+            },
+            "y":{
+            "type": "CombinationalTap",
+            "key": ["ctrl","super","3"],
+            "delay": 0                
+            },
+            "select":{
+            "type": "ButtonTap",
+            "key": "volumemute",
+            "delay": 0                
+            },
+            "lb":{
+            "type": "CombinationalTap",
+            "key": ["ctrl","shift","tab"],
+            "delay": 0                
+            },
+            "rb":{
+            "type": "CombinationalTap",
+            "key": ["ctrl","tab"],
+            "delay": 0                
+            },
+            "leftthumb":{
+            "type": "ButtonHoldTap",
+            "key": "ctrl",
+            "delay": 0                
+            },
+            "rightthumb":{
+            "type": "ButtonHoldClick",
+            "key": "left",
+            "delay": 0               
+            }
+        },
+        "JoystickAction":{
+            "MouseControl": {
+                "joystick": "right",
+                "LowerSensitivity": 0.30,
+                "Speed": 65
+            },
+ 
+            "Scroll": {
+                "joystick": "left",
+                "speed": 50
+            }
+        }
+    }
+}
