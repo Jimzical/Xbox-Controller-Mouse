@@ -135,8 +135,8 @@
  
 ## Know Issues
  - Issue: If the code is being run with a terminal and the terminal is closed without ending the program it might cause some issues
- - Solution: So Far the easiest way to fix it is either to close it through the Task Manager or ctrl+alt+del and log out
 
+   > Solution: So Far the easiest way to fix it is either to close it through the Task Manager or ctrl+alt+del and log out
 ## Contact
 
 Project Link: [https://github.com/Jimzical/Xbox-Controller-Mouse](https://github.com/Jimzical/Xbox-Controller-Mouse)
